@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>郑军军 | AIGC 设计师 & 自动化创作者</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .video-card:hover video {
+            transform: scale(1.05);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Marquee styles */
+        .marquee-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        .marquee-content {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+        }
+        .marquee-row-1 { animation: scroll-left 60s linear infinite; }
+        .marquee-row-2 { animation: scroll-right 70s linear infinite; }
+        .marquee-row-3 { animation: scroll-left 65s linear infinite; }
+        .marquee-row-4 { animation: scroll-right 75s linear infinite; }
+        .marquee-row-5 { animation: scroll-left 80s linear infinite; }
+        
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes scroll-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
+        .video-card {
+            width: 200px;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-bold text-2xl gradient-text">Zheng Junjun</div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-blue-500 px-3 py-2 transition-colors">首页</a>
+                        <a href="#about" class="hover:text-blue-500 px-3 py-2 transition-colors">关于我</a>
+                        <a href="#portfolio" class="hover:text-blue-500 px-3 py-2 transition-colors">AI 视频</a>
+                        <a href="#images" class="hover:text-blue-500 px-3 py-2 transition-colors">AI 绘画</a>
+                        <a href="#resume" class="hover:text-blue-500 px-3 py-2 transition-colors">个人简历</a>
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">联系我</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+                我是 <span class="gradient-text">郑军军</span><br>
+                AIGC 设计师 & 自动化创作者
+            </h1>
+            <p class="text-xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
+                专注于 AIGC（人工智能生成内容）领域。我通过 Gemini 和 Sora 等模型开发自动化工具，批量生成高质量的营销短视频。
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="#portfolio" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-full font-semibold transition-all shadow-lg shadow-blue-500/20">查看作品集</a>
+                <a href="郑军军个人简历.pdf" download class="px-8 py-3 border border-gray-700 hover:bg-gray-800 rounded-full font-semibold transition-all">下载简历</a>
+            </div>
+        </div>
+        <!-- Decorative background -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-full h-full opacity-20">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-[128px]"></div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-[128px]"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">关于我</h2>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        作为一名深耕 AIGC 领域的创作者，我不仅具备敏锐的 AI 创作嗅觉，同时也积极拥抱 AI 浪潮。我擅长深度使用各类 AI 工具，并能通过 AI 编程快速搭建常规小工具，极大地提高了工作效率；同时，我熟练运用AI自动化生成流程，利用 Google Gemini 、chat gbt等模型进行剧本分析，并结合 seedance2.0模型实现了短视频的规模化生产。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="p-4 bg-gray-900 rounded-xl">
+                            <h3 class="font-bold text-blue-500 mb-1">AI 创意落地</h3>
+                            <p class="text-sm text-gray-400">Prompt Engineering, Workflow Optimization</p>
+                        </div>
+                        <div class="p-4 bg-gray-900 rounded-xl">
+                            <h3 class="font-bold text-purple-500 mb-1">AI 自动化</h3>
+                            <p class="text-sm text-gray-400">Gemini, Sora, AIGC Workflow</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
+                    <div class="aspect-video bg-black flex items-center justify-center border border-gray-700 relative">
+                        <video 
+                            id="about-video"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                            muted 
+                            loop 
+                            playsinline
+                            autoplay
+                            preload="auto"
+                        >
+                            <source src="名画无字幕.mp4" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent pointer-events-none"></div>
+                        <div class="absolute bottom-4 left-4 pointer-events-none">
+                            <span class="px-3 py-1 bg-blue-500 text-xs font-bold rounded">技术驱动</span>
+                            <span class="px-3 py-1 bg-purple-500 text-xs font-bold rounded ml-2">创意无限</span>
+                        </div>
+                        <!-- Video Navigation Buttons -->
+                        <button onclick="prevAboutVideo()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button onclick="nextAboutVideo()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 z-10">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="text-center">
+                <h2 class="text-4xl font-bold mb-4">AI 视频作品集</h2>
+                <p class="text-gray-400">基于 Google Gemini 剧本分析与 Sora 模型生成的商业带货短剧</p>
+            </div>
+        </div>
+        
+        <div class="space-y-12">
+            <!-- Row 1 -->
+            <div class="marquee-container">
+                <div id="marquee-1" class="marquee-content marquee-row-1"></div>
+            </div>
+            <!-- Row 2 -->
+            <div class="marquee-container">
+                <div id="marquee-2" class="marquee-content marquee-row-2"></div>
+            </div>
+            <!-- Row 3 -->
+            <div class="marquee-container">
+                <div id="marquee-3" class="marquee-content marquee-row-3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Image Gallery Section -->
+    <section id="images" class="py-20 bg-gray-800/30 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="text-center">
+                <h2 class="text-4xl font-bold mb-4">AI 绘画作品集</h2>
+                <p class="text-gray-400">使用 Higgsfield 等前沿 AI 模型生成的精美图像作品</p>
+            </div>
+        </div>
+        
+        <div class="space-y-12">
+            <!-- Row 1 -->
+            <div class="marquee-container">
+                <div id="image-marquee-1" class="marquee-content marquee-row-4"></div>
+            </div>
+            <!-- Row 2 -->
+            <div class="marquee-container">
+                <div id="image-marquee-2" class="marquee-content marquee-row-5"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Summary Section -->
+    <section id="resume" class="py-20 bg-gray-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-8">核心竞争力</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-700">
+                    <i class="fas fa-palette text-3xl text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">创意策划</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• 爆款内容逻辑分析</li>
+                        <li>• 多平台内容布局</li>
+                        <li>• 受众画像与精准投放</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-700">
+                    <i class="fas fa-robot text-3xl text-purple-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">AI 创作流</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• LLM 剧本创作引擎</li>
+                        <li>• Sora / Veo 视频生成</li>
+                        <li>• 自动化内容生产流</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-2xl border border-gray-700">
+                    <i class="fas fa-chart-line text-3xl text-green-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">商业价值</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>• 降低 90% 创作成本</li>
+                        <li>• 批量化多账号运营</li>
+                        <li>• 营销短剧高转化率</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12">
+                <a href="郑军军个人简历.pdf" class="inline-flex items-center space-x-2 text-blue-500 hover:text-blue-400 font-semibold text-lg transition-colors">
+                    <span>查看完整 PDF 简历</span>
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-12">联系我</h2>
+            <div class="flex flex-col items-center space-y-6">
+                <div class="flex justify-center space-x-12">
+                    <div class="group flex flex-col items-center space-y-2">
+                        <div class="text-4xl hover:text-blue-500 transition-colors cursor-pointer"><i class="fab fa-weixin"></i></div>
+                        <span class="text-gray-400 text-sm group-hover:text-blue-500 transition-colors font-medium">ZJTS12345</span>
+                    </div>
+                    <div class="group flex flex-col items-center space-y-2">
+                        <a href="mailto:yzhen386@gmail.com" class="text-4xl hover:text-blue-500 transition-colors"><i class="fas fa-envelope"></i></a>
+                        <span class="text-gray-400 text-sm group-hover:text-blue-500 transition-colors font-medium">yzhen386@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-12 text-gray-500 leading-relaxed">期待与您在技术或创意领域的深度合作</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-gray-800 text-center text-gray-600 text-sm">
+        <p>&copy; 2026 郑军军. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Data for videos (simulating reading from folder)
+        const videoFiles = [
+            'video-1768538030960.mp4', 'video-1768551855820.mp4', 'video-1768552047294.mp4',
+            'video-1768553745775.mp4', 'video-1768554227773.mp4', 'video-1768554402720.mp4',
+            'video-1768555505159.mp4', 'video-1768555743737.mp4', 'video-1768556069196.mp4',
+            'video-1768556603010.mp4', 'video-1768557048169.mp4', 'video-1768558985420.mp4',
+            'video-1768559376386.mp4', 'video-1768559439652.mp4', 'video-1768560036716.mp4',
+            'video-1768560166788.mp4', 'video-1768561391230.mp4', 'video-1768793226001.mp4',
+            'video-1768797030253.mp4', 'video-1768808239102.mp4', 'video-1768809648034.mp4',
+            'video-1768814021983.mp4', 'video-1768891141051.mp4', 'video-1768891158632.mp4',
+            'video-1768892607328.mp4', 'video-1768896182284.mp4', 'video-1768897081173.mp4',
+            'video-1768897427097.mp4', 'video-1768898163040.mp4', 'video-1768907409148.mp4'
+        ];
+
+        const imageFiles = [
+            '00f57923-10c5-42da-bdcb-aa20a498fb94.png', '0bffff1e-8e86-460d-8765-419476e060ef.png',
+            '0fdb5f7c-f30f-4ab8-bbb2-6ef5d1aabbe0.png', '15fc2b44-26fb-4c76-80e7-b13d26a6a3b4.png',
+            '1e8cc3b2-2674-4b6f-aff6-c53bd9ce4216.png', '20250901_1430_3D Cartoon Transformation_remix_01k41zck8afpnbnk3edgz0bckb.png',
+            '20250901_1430_3D Cartoon Transformation_remix_01k41zck8cfq2tdx6rc2gcayzn.png', '20250901_1432_Pixar-Style Girl Doll_remix_01k41zh5dnf3taq3gyht2wwstb.png',
+            '29135925-a18f-4b0b-a1a5-848703fbc7c4.png', '37bd57d0-73f4-4ce4-9db0-b0aaed1d157b.png',
+            '4088185d-40ad-4b58-8163-ab97b682ac56.png', '42154f7e-9661-4ea4-a8b2-dfe1974d97c0.png',
+            '439ef939-8106-4c61-86e7-294e789992f6.png', '4de6f23c-caa1-41d7-9499-24199daad92c.png',
+            '4hrgqwb7m9rmc0ctqqnrmcdxr0.jpeg', '56c59ccb-e166-4ccb-a47c-2e5e5a0d0957.png',
+            '5c342b64-6050-4244-9523-3747f6ce8d0e.png', '615250ac-09e0-4e7e-be15-5c21c37a5a55.png',
+            '65d9c09e-ce0c-4af7-84c7-fb2a8485e3c6.png', '6e5fe33f-6b57-48f8-8fed-f7240ffb5edb.png',
+            '72b1d3d7-12fe-4047-9574-3b83a97b22c5.png', '72ce74f0-427e-4d66-9a37-09aef72a7c2d.png',
+             '7bf36a33-e67f-4b48-94a6-8b6b18efdef4.png', '7e420f2b-eb48-4072-afc4-d9d3f8369b6f.png',
+             '87d3c062-cfd3-4505-8be3-9baecb57a6d5.png', '8d5226b4-a57b-43bc-b1ad-850c0801f740.png',
+             '930c8d6e-8d35-45c6-847c-d76932bde5b8.png', '94f4abab-497a-462a-a9c3-436f27f9c246.png',
+             'a304e5eb-4757-481b-a6f7-33bf7dc7f02d.png', 'a9c38fdb-9d62-4f55-92f4-5931a7587c66.png',
+             'af8ef8c9-fb8b-43c8-afec-2c5f9f1b5d5a.png', 'c6bb280a-ada3-40e4-bd83-096587bc44bc.png'
+         ];
+
+        // Function to create video card
+        function createVideoCard(filename, index) {
+            const card = document.createElement('div');
+            card.className = 'video-card group bg-gray-800 rounded-2xl overflow-hidden shadow-xl border border-gray-700 transition-all hover:border-blue-500/50 cursor-pointer';
+            card.innerHTML = `
+                <div class="aspect-[9/16] bg-black overflow-hidden relative">
+                    <video 
+                        class="w-full h-full object-cover transition-transform duration-500" 
+                        muted 
+                        loop 
+                        playsinline
+                        autoplay
+                        preload="auto"
+                    >
+                        <source src="videos/${filename}" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-xs text-blue-400 font-bold mb-1 uppercase tracking-wider">AI Shoppable Skit</span>
+                        <h3 class="text-lg font-bold">作品 ${index + 1}</h3>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fas fa-expand text-xs"></i>
+                    </div>
+                </div>
+            `;
+            // Add click event for full-screen preview
+            card.onclick = () => {
+                const video = card.querySelector('video');
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) {
+                    video.msRequestFullscreen();
+                }
+            };
+            return card;
+        }
+
+        // Function to create image card
+        function createImageCard(filename) {
+            const card = document.createElement('div');
+            card.className = 'relative group aspect-square bg-gray-800 rounded-xl overflow-hidden cursor-zoom-in border border-gray-700 hover:border-blue-500/50 transition-all w-[200px] flex-shrink-0';
+            card.innerHTML = `
+                <img src="images/${filename}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy">
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                </div>
+            `;
+            card.onclick = () => {
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 cursor-zoom-out';
+                modal.innerHTML = `<img src="images/${filename}" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">`;
+                modal.onclick = () => modal.remove();
+                document.body.appendChild(modal);
+            };
+            return card;
+        }
+
+        // Populate Videos
+        const videoRows = [
+            document.getElementById('marquee-1'),
+            document.getElementById('marquee-2'),
+            document.getElementById('marquee-3')
+        ];
+
+        const vGroupSize = Math.ceil(videoFiles.length / 3);
+        const vGroups = [
+            videoFiles.slice(0, vGroupSize),
+            videoFiles.slice(vGroupSize, vGroupSize * 2),
+            videoFiles.slice(vGroupSize * 2)
+        ];
+
+        vGroups.forEach((group, rowIndex) => {
+            const container = videoRows[rowIndex];
+            const doubleGroup = [...group, ...group];
+            doubleGroup.forEach((filename, index) => {
+                container.appendChild(createVideoCard(filename, index));
+            });
+        });
+
+        // About Section Video Switcher
+        const aboutVideos = ['名画无字幕.mp4', '1.mp4', '2.mp4', '3.mp4'];
+        let currentAboutVideoIndex = 0;
+        const aboutVideoElement = document.getElementById('about-video');
+
+        function changeAboutVideo(direction) {
+            if (direction === 'next') {
+                currentAboutVideoIndex = (currentAboutVideoIndex + 1) % aboutVideos.length;
+            } else {
+                currentAboutVideoIndex = (currentAboutVideoIndex - 1 + aboutVideos.length) % aboutVideos.length;
+            }
+            
+            // Add a brief fade effect during transition
+            aboutVideoElement.style.opacity = 0;
+            setTimeout(() => {
+                aboutVideoElement.src = aboutVideos[currentAboutVideoIndex];
+                aboutVideoElement.play();
+                aboutVideoElement.style.opacity = 1;
+            }, 300);
+        }
+
+        function nextAboutVideo() {
+            changeAboutVideo('next');
+        }
+
+        function prevAboutVideo() {
+            changeAboutVideo('prev');
+        }
+        
+        // Populate Images
+
+        const imageRows = [
+            document.getElementById('image-marquee-1'),
+            document.getElementById('image-marquee-2')
+        ];
+
+        const iGroupSize = Math.ceil(imageFiles.length / 2);
+        const iGroups = [
+            imageFiles.slice(0, iGroupSize),
+            imageFiles.slice(iGroupSize)
+        ];
+
+        iGroups.forEach((group, rowIndex) => {
+            const container = imageRows[rowIndex];
+            const doubleGroup = [...group, ...group];
+            doubleGroup.forEach((filename) => {
+                container.appendChild(createImageCard(filename));
+            });
+        });
+    </script>
+</body>
+</html>
