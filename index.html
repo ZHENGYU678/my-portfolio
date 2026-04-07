@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>郑军军 | AIGC 设计师 & 自动化创作者</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/tailwind.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
@@ -66,6 +65,7 @@
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#home" class="hover:text-blue-500 px-3 py-2 transition-colors">首页</a>
+                        <a href="#ecom" class="hover:text-blue-500 px-3 py-2 transition-colors">电商视频</a>
                         <a href="#about" class="hover:text-blue-500 px-3 py-2 transition-colors">关于我</a>
                         <a href="#portfolio" class="hover:text-blue-500 px-3 py-2 transition-colors">AI 视频</a>
                         <a href="#images" class="hover:text-blue-500 px-3 py-2 transition-colors">AI 绘画</a>
@@ -150,12 +150,30 @@
         </div>
     </section>
 
+    <section id="ecom" class="py-20 bg-gray-800/30 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="text-center">
+                <h2 class="text-4xl font-bold mb-4">AI 电商视频（Seedance 2.0）</h2>
+                <p class="text-gray-400">电商短视频作品展示：产品卖点表达、节奏控制与镜头调度</p>
+            </div>
+        </div>
+
+        <div class="space-y-12">
+            <div class="marquee-container">
+                <div id="ecom-marquee-1" class="marquee-content marquee-row-1"></div>
+            </div>
+            <div class="marquee-container">
+                <div id="ecom-marquee-2" class="marquee-content marquee-row-2"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- Portfolio Section -->
     <section id="portfolio" class="py-20 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
             <div class="text-center">
                 <h2 class="text-4xl font-bold mb-4">AI 视频作品集</h2>
-                <p class="text-gray-400">基于 Google Gemini 剧本分析与 Sora 模型生成的商业带货短剧</p>
+                <p class="text-gray-400">基于 Google Gemini / ChatGPT 剧本分析，结合 Sora、Seedance、Kling、Veo 等模型生成的商业带货短剧</p>
             </div>
         </div>
         
@@ -407,6 +425,110 @@
             changeAboutVideo('prev');
         }
         
+        function createEcomVideoCard(filename, index) {
+            const card = document.createElement('div');
+            card.className = 'video-card group bg-gray-800 rounded-2xl overflow-hidden shadow-xl border border-gray-700 transition-all hover:border-blue-500/50 cursor-pointer';
+            card.innerHTML = `
+                <div class="aspect-[9/16] bg-black overflow-hidden relative">
+                    <video
+                        class="w-full h-full object-cover transition-transform duration-500"
+                        muted
+                        loop
+                        playsinline
+                        preload="none"
+                        data-lazy="1"
+                        onmouseover="this.play()"
+                        onmouseout="this.pause(); this.currentTime = 0;"
+                    >
+                        <source data-src="AI电商视频/${filename}" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-xs text-blue-400 font-bold mb-1 uppercase tracking-wider">Seedance 2.0</span>
+                        <h3 class="text-lg font-bold">电商作品 ${index + 1}</h3>
+                    </div>
+                </div>
+            `;
+            card.onclick = () => {
+                const video = card.querySelector('video');
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) {
+                    video.msRequestFullscreen();
+                }
+            };
+            return card;
+        }
+
+        const ecomVideoFiles = [
+            '260310_0018_video_edit_6192.mp4',
+            '260310_0028_video_edit_3200.mp4',
+            '260310_0029_video_edit_6457.mp4',
+            '260310_0073_video_edit_8834.mp4',
+            '260310_0095_video_edit_3415.mp4',
+            'media_compress_video_11937b2bbafc4ee5941fb9304bbd6cf5.mp4',
+            'media_compress_video_2fb3fb1abf0d4b59b63b8a361b34d619.mp4',
+            'media_compress_video_3d6a8a41ba7e4d44bf238fb91b5c3dd4.mp4',
+            'media_compress_video_445726c6e4bc4416ae759b4f36f42280.mp4',
+            'media_compress_video_7a28687f174341a4bc5080730e8952ed.mp4',
+            'media_compress_video_b30346bd44c04c949052d3519629eb49.mp4',
+            'media_compress_video_bee225bec24647e7960dd47b434fb448.mp4',
+            'media_compress_video_c40012d932f04bb1aec88ea3f9d90679.mp4',
+            'media_compress_video_e3d9b99327cf40248662160156046eb6.mp4',
+            'media_compress_video_fbe1bf53df6f438687112754d542bebd.mp4'
+        ];
+
+        const ecomRows = [
+            document.getElementById('ecom-marquee-1'),
+            document.getElementById('ecom-marquee-2')
+        ];
+
+        const eGroupSize = Math.ceil(ecomVideoFiles.length / 2);
+        const eGroups = [
+            ecomVideoFiles.slice(0, eGroupSize),
+            ecomVideoFiles.slice(eGroupSize)
+        ];
+
+        eGroups.forEach((group, rowIndex) => {
+            const container = ecomRows[rowIndex];
+            if (!container) return;
+            const doubleGroup = [...group, ...group];
+            doubleGroup.forEach((filename, index) => {
+                container.appendChild(createEcomVideoCard(filename, index));
+            });
+        });
+
+        (function initLazyVideos() {
+            const videos = Array.from(document.querySelectorAll('video[data-lazy="1"]'));
+            if (videos.length === 0) return;
+
+            const loadVideo = (video) => {
+                if (!video || video.dataset.lazyLoaded === '1') return;
+                const source = video.querySelector('source[data-src]');
+                if (!source) return;
+                source.src = source.dataset.src;
+                source.removeAttribute('data-src');
+                video.dataset.lazyLoaded = '1';
+                video.load();
+            };
+
+            if (!('IntersectionObserver' in window)) {
+                videos.forEach(loadVideo);
+                return;
+            }
+
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    loadVideo(entry.target);
+                    io.unobserve(entry.target);
+                });
+            }, { root: null, rootMargin: '200px', threshold: 0.01 });
+
+            videos.forEach((v) => io.observe(v));
+        })();
+
         // Populate Images
 
         const imageRows = [
